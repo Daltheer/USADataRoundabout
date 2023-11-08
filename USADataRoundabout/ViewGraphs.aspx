@@ -4,16 +4,17 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        .small-flex {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-        }
-        .big-flex {
-            display: flex;
-            flex-direction: row;
-            align-items: start;
-        }
+    .big-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding-top: 50px;
+    }
+    .small-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
 </style>
     <div class="big-flex">
         <div class="small-flex">
@@ -39,4 +40,31 @@
             </select>
         </div>
     </div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['School', 'Complaints'],
+                ['Computing', 11],
+                ['Engineering', 2],
+                ['Athletics', 2],
+                ['Medical', 2],
+                ['Arts and Sciences', 7]
+            ]);
+
+            var options = {
+                title: 'Complaint Distribution'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+    <div id="piechart" style="width: 900px; height: 500px;" class="big-flex"></div>
     </asp:Content>

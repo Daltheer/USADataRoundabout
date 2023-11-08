@@ -6,6 +6,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
+        padding-top: 50px;
     }
     .flex-container {
         display: flex;
