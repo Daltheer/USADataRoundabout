@@ -11,25 +11,25 @@ namespace USADataRoundabout
 {
 
 
-    public partial class Contact
+    public partial class EditInformation
     {
 
         /// <summary>
-        /// dteStart control.
+        /// txtNewLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dteStart;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNewLocation;
 
         /// <summary>
-        /// dteEnd control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dteEnd;
+        protected global::System.Web.UI.HtmlControls.HtmlButton Button1;
     }
 }

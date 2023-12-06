@@ -15,18 +15,27 @@
             border: solid;
             border-radius: 13px;
             padding: 10px;
+            width: 300px;
         }
     </style>
     <div class="big-flex">
-        <div class="flex-container">
-            <p>Your Submitted Complaints</p>
+        <div class="flex-container" >
+            <dl id="dlSubmittedComps" runat="server">
+                <dt>Your Submitted Complaints:</dt>
+            </dl>
+            <var runat="server" id="submittedComps" style="word-wrap:normal;"></var>
         </div>
         <div class="flex-container">
-            <p>Bookmarked Complaints</p>
+            <dl id="dlBookmarkedComps" runat="server">
+                <dt>Bookmarked Complaints:</dt>
+            </dl>
+            <var runat="server" id="bookMarkedComps"></var>
         </div>
         <div class="flex-container">
-            <p>Complaints Since Last Login</p>
+            <dl id="dlCompsSinceLastLogin" runat="server">
+                <dt>Complaints Since Last Login:</dt>
+            </dl>
+            <var runat="server" id="sinceLastLoginComps"></var>
         </div>
     </div>
-
 </asp:Content>

@@ -1,4 +1,6 @@
-﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SubmitComplaint.aspx.cs" Inherits="USADataRoundabout.About" %>
+﻿<%@ Page Title="ViewComplaint" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ViewComplaint.aspx.cs" Inherits="USADataRoundabout.ViewComplaint" %>
+
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -8,13 +10,60 @@
         justify-content: space-evenly;
         padding-top: 50px;
     }
-    .flex-container {
+    .small-flex {
         display: flex;
         flex-direction: column;
         align-items: start;
     }
 </style>
     <div class="big-flex">
+        <var id="complaintIDTitle" runat="server"></var>
+        <var id="originalDate" runat="server"></var>
+        <button type="submit" runat="server" id="btnBookmark" onserverclick="btnBookmark_Click">Add to Bookmarks</button>
+        <button type="submit" runat="server" id="btnRemoveBookmark" onserverclick="btnRemoveBookmark_Click">Remove from Bookmarks</button>
+        <button type="submit" runat="server" id="btnEdit" onserverclick="btnEdit_Click">Edit Complaint</button>
+        <button type="submit" runat="server" id="btnCancel" onserverclick="btnCancel_Click">Cancel Edit</button>
+    </div>
+    <div class="big-flex" id="viewSection" runat="server">
+        <div class="flex-container">
+            <dl>
+                <dt>Location of Incident:</dt>
+                <dd><input type="text" id="txtFacilityView" runat="server" readonly /></dd>
+            </dl>
+            <dl>
+                <dt>Complaint Level:</dt>
+                <dd><input type="text" id="txtCompImpactView" runat="server" readonly /></dd>
+            </dl>
+            <dl>
+                <dt>Involved Protected Classes:</dt>
+                <dd><ul id="ulProtClassView" runat="server"></ul></dd>
+            </dl>
+            <dl>
+                <dt>Additional Notes:</dt>
+                <dd><input type="text" id="txtAddNotesView" runat="server" readonly /></dd>
+            </dl>
+        </div>
+        <div class="flex-container">
+            <dl>
+                <dt>Date of Incident:</dt>
+                <dd><input type="text" id="txtDateIncView" runat="server" readonly /></dd>
+            </dl>
+            <dl>
+                <dt>Source of Complaint:</dt>
+                <dd><input type="text" id="txtSourceCompView" runat="server" readonly/></dd>
+            </dl>
+            <dl>
+                <dt>Those Involved in the Complaint:</dt>
+                <dd><ul id="ulStakeholdersView" runat="server"></ul></dd>
+            </dl>
+            <dl>
+                <dt>Action Taken:</dt>
+                <dd><input type="text" id="txtActionTakenView" runat="server" readonly /></dd>
+            </dl>
+            <p>Resolved?    <input type="checkbox" id="chkResolvedView" runat="server" onclick="return false;" /></p>
+        </div>
+    </div>
+    <div class="big-flex" id="editSection" runat="server">
         <div class="flex-container">
             <dl>
                 <dt>Location of Incident:</dt>
@@ -82,8 +131,7 @@
             <p>Resolved?    <input type="checkbox" id="chkResolved" runat="server" /></p>
         </div>
     </div>
-    <div class="big-flex">
+    <div class="big-flex" id="editButton" runat="server">
         <button type="submit" runat="server" id="btnSubmit" onserverclick="btnSubmit_Click">Submit</button>
-        <!--<var id="output" runat="server">imhere</var>-->
     </div>
 </asp:Content>

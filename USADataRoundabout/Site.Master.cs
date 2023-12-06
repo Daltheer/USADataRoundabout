@@ -11,7 +11,11 @@ namespace USADataRoundabout
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string isAdmin = ((Session["Permissions"] != null) ? Session["Permissions"].ToString() : "0");
+            if (isAdmin == "0" || !(isAdmin=="admin"))
+            {
+                titleEditInfo.Visible = false;
+            }
         }
     }
 }
